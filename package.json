@@ -1,0 +1,17 @@
+{
+  "name": "snowball",
+  "version": "1.0.0",
+  "description": "\"# learning_socket.io\"",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.19.2",
+    "nodemon": "^3.1.0",
+    "socket.io": "^4.7.5"
+  }
+}
