@@ -5,15 +5,25 @@ const { Server } = require("socket.io");
 const app = express();
 const httpServer = createServer(app);
 const io = new Server(httpServer);
+const loadMap = require('./mapLoader.js')
 
-io.on("connection",(socket)=>{
-    console.log("User connected",socket.id)
-})
+async function main() {
+   
+    const map2D = await loadMap;
+    
+    io.on("connection", (socket) => {
+        console.log("User connected", socket.id)
 
-app.use(express.static("public"));
+        socket.emit('map', map2D);
+    })
 
-// io.on("connection", (socket) => {
-//   // ...
-// });
+    app.use(express.static("public"));
 
-httpServer.listen(5000);
+    // io.on("connection", (socket) => {
+    //   // ...
+    // });
+
+    httpServer.listen(5000);
+}
+
+main();
